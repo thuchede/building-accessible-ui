@@ -1,0 +1,278 @@
+---
+import Slide from "../components/Slide.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+---
+
+<Slide>
+  <h2>Building accessible UI</h2>
+  <p>and making the <s>world</s> web a better place</p>
+</Slide>
+
+<Slide>
+	<CodeBlock lang="javascript" lines="|1|2">
+		{
+			`console.log('Hello there');
+console.log('this is a sample code')`
+		}
+	</CodeBlock>
+</Slide>
+
+<Slide>
+	<h2>What do you mean by accessible?</h2>
+	<!--<p>Accessiblity (sometimes referred to as a11y) is the set of ...</p>-->
+</Slide>
+
+<Slide sectionTitle="Defining accessibility">
+	<p>Accessiblity (sometimes referred to as a11y) is the set of ...</p>
+</Slide>
+
+<Slide sectionTitle="Defining accessibility">
+	<h2>Why a11y matters?</h2>
+</Slide>
+
+<Slide sectionTitle="Defining accessibility" subSectionTitle="Why a11y matters?">
+	<ul>
+		<li>For users: Improved access and usability</li>
+		<li class="fragment">For businesses: Broader reach, compliance, and better user experience</li>
+		<li class="fragment">For developers: Improved coding practices and design thinking</li>
+	</ul>
+</Slide>
+
+
+<Slide sectionTitle="Defining accessibility">
+	<h2>Types of disabilities</h2>
+</Slide>
+
+<Slide sectionTitle="Defining accessibility" subSectionTitle="Types of disabilities">
+	<h3>Different categories of disabilities</h3>
+</Slide>
+
+<Slide sectionTitle="Defining accessibility" subSectionTitle="Types of disabilities">
+	<h3>Different categories of disabilities</h3>
+	<ul>
+		<li>Visual: Low vision, blindness, color blindness</li>
+		<li class="fragment">Auditory: Hearing impairments and deafness</li>
+		<li class="fragment">Motor: Limited dexterity or mobility issues</li>
+		<li class="fragment">Cognitive: Dyslexia, ADHD, memory issues</li>
+	</ul>
+</Slide>
+
+<Slide sectionTitle="Defining accessibility" subSectionTitle="Types of disabilities">
+	<!--<h3></h3>-->
+	<p>Impairement can also be temporary or situational disabilities</p>
+	<ul>
+		<li class="fragment">Visual: no glasses, very bright sunlight</li>
+		<li class="fragment">Auditory: very noisy environment, tinnitus</li>
+		<li class="fragment">Motor: injured hand, holding something</li>
+		<li class="fragment">Cognitive: tired, under heavy medication</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h2>practical techniques</h2>
+	<ul>
+		<li>semantic HTML tags</li>
+		<li>ARIA roles and attributes</li>
+		<li>colors (and visual indicators)</li>
+		<li>keyboard navigations</li>
+		<li>screen reader</li>
+	</ul>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="semantic HTML tags">
+	<CodeBlock lang="html" lines="|1|2|3-11">
+		{
+			`<button onclick="...">Save</button>
+<a href="https://zenika.com/">Go to Zenika</a>
+<details>
+	<summary>
+		accordion
+	</summary>
+	accordion content
+</details>`
+		}
+	</CodeBlock>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="semantic HTML tags">
+	<div style="display:flex; flex-direction: column; gap: 48px; padding: 48px 96px; width: 80%; background: white; border-radius: 10px">
+		<button style="font-size: 1em" onclick="confirm('Are you sure?')">Save</button>
+		<a href="https://zenika.com/" target="_blank" style="all:revert">Go to Zenika</a>
+		<details style="color: black">
+			<summary>
+			Chat is this real?
+			</summary>
+			<div>
+			Yes this is a native html tag <br/>
+			That you can even animate using native css (in Chrome v131+)
+			</div>
+		</details>
+		<style>
+			:root {
+				interpolate-size: allow-keywords;
+			}
+			details {
+				color: black;
+				border: solid 1px black;
+				border-radius: 10px;
+				text-align: justify;
+				padding-inline: 8px;
+				overflow: hidden;
+			}
+			details::details-content {
+				display: block;
+				block-size: 0;
+				transition: block-size .5s, content-visibility .5s;
+				transition-behavior: allow-discrete;
+			}
+			details[open]::details-content {
+				block-size: auto;
+				block-size: calc-size(auto);
+			}
+		</style>
+	</div>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="Color contrast">
+	<CodeBlock lang="css" lines="|2|3">
+		{
+			`.bloc {
+	color: #f1bd72;
+	background: #d65718;
+}`
+		}
+	</CodeBlock>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="Color contrast">
+	<div style="padding: 48px; background-color: #d65718; color: #f1bd72; font-size: 2rem; border-radius: 10px">
+		Some text with contrast issue
+	</div>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="Color contrast">
+	<p>The current algorithm only take luminance into account</p>
+	<p>New algorithm to be used by WCAG: APCA</p>
+	<a
+		href="https://git.apcacontrast.com/"
+		target="_blank"
+	>https://git.apcacontrast.com</a>
+	<a
+		href="https://www.smashingmagazine.com/2022/09/realities-myths-contrast-color/"
+		target="_blank"
+	>https://www.smashingmagazine.com/2022/09/realities-myths-contrast-color/</a>
+</Slide>
+
+<Slide sectionTitle="practical techniques" subSectionTitle="Dark mode and astigmatism">
+	<p>Dark mode might look nice to some</p>
+	<p>But it can also make your content harder to read (esp. for people with astigmatism)</p>
+	<a
+		href="https://stephaniewalter.design/blog/dark-mode-accessibility-myth-debunked/"
+		target="_blank"
+	>https://stephaniewalter.design/blog/dark-mode-accessibility-myth-debunked/</a>
+</Slide>
+
+<Slide>
+	<h3>about screen readers</h3>
+	<ul>
+		<li>learning curve</li>
+		<li>browser/os dependent</li>
+		<li>nothing beats user testing</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h2>Testing</h2>
+
+	<ul>
+		<li>
+		 	manual testing
+			<ul>
+				<li>screen readers</li>
+				<li>keyboard navigation</li>
+			</ul>
+		</li>
+		<li>automated</li>
+		<li>user testing</li>
+	</ul>
+</Slide>
+
+<section>
+
+<Slide>
+	<h2>Demo</h2>
+</Slide>
+<Slide>
+	<h2>Demo2</h2>
+</Slide>
+<Slide>
+	<h2>Demo3</h2>
+</Slide>
+
+</section>
+
+<section>
+	<Slide>
+		<h2>Closing</h2>
+	</Slide>
+<Slide>
+	<h2>Case studies?</h2>
+</Slide>
+
+<Slide>
+	<h2>Shift left</h2>
+	<ul>
+		<li>integrate a11y in the process from the beginning, not as a second thought</li>
+		<li>collaboration between designer/devs/qa/po</li>
+		<li>audits (manual or automated) => easy to comply to regulation</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h2>DX</h2>
+	<ul>
+		<li>code quality: more maintainable code base</li>
+		<li>testing tools: testing lib</li>
+		<li>personal growth: new skill</li>
+	</ul>
+</Slide>
+
+<Slide>
+	<h2>Using UI libs</h2>
+</Slide>
+
+<Slide subSectionTitle="Using UI libs">
+	quality of UI libs is really a mixed bag
+	<ul>
+		<li>bootstrap</li>
+		<li>primefaces</li>
+		<li>material UI</li>
+	</ul>
+</Slide>
+
+<Slide subSectionTitle="Using UI libs">
+	quality of UI libs is really a mixed bag
+	<ul>
+		<li>radix & shadcn</li>
+		<li>Spectrum by Adobe</li>
+		<li>Chakra UI</li>
+		<li>Mantine UI</li>
+	</ul>
+</Slide>
+
+	<!--TODO:move to next section?-->
+<Slide>
+	<h2>Resources</h2>
+	<ul>
+		<li>a11y guidelines wcag aria & cie</li>
+		<li>tools plugins lightouse, axe, contrast checker, deuteranopia tools</li>
+		<li>community & learnings</li>
+	</ul>
+</Slide>
+</section>
+
+<section>
+<Slide>
+	<h2>Q&A</h2>
+</Slide>
+</section>
