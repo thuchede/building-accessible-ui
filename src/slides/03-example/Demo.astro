@@ -1,0 +1,123 @@
+---
+import Slide from "../../components/Slide.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
+import {ButtonBase, HTMLButton, ButtonFocus, ButtonKeyUp, ButtonAria} from "../../components/react/button-demo/Button";
+import {BetterForm, Form} from "../../components/react/button-demo/Form";
+---
+
+<section>
+	<Slide>
+		<h1>Demo</h1>
+	</Slide>
+	<Slide sectionTitle="Demo">
+		<h2>Let's built a button</h2>
+	</Slide>
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="jsx" lines="|2">
+			{
+				`const Button = () => {
+ return <button onClick="...">Save</button>
+}`
+			}
+		</CodeBlock>
+	</Slide>
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<HTMLButton client:visible />
+	</Slide>
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<h3>What if we don't want to use a button?</h3>
+	</Slide>
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="jsx" lines="|2">
+			{
+				`const Button = () => {
+ return <div onClick="...">Save</div>
+}`
+			}
+		</CodeBlock>
+	</Slide>
+	<Slide>
+		<ButtonBase client:visible />
+	</Slide>
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="jsx" lines="3">
+			{
+				`const Button = () => {
+return <div
+	  tabIndex={0}
+	  onClick={...}
+  >Save</div>
+}`
+			}
+		</CodeBlock>
+	</Slide>
+	<Slide>
+			<ButtonFocus client:visible />
+	</Slide>
+
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="jsx" lines="5">
+			{
+				`const Button = () => {
+return <div
+	  tabIndex={0}
+	  onClick={...}
+		onKeyUp={...}
+  >Save</div>
+}`
+			}
+		</CodeBlock>
+	</Slide>
+	<Slide>
+		<ButtonKeyUp client:visible />
+	</Slide>
+
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="jsx" lines="3">
+			{
+				`const Button = () => {
+return <div
+		role='button'
+	  tabIndex={0}
+	  onClick={...}
+		onKeyUp={...}
+  >Save</div>
+}`
+			}
+		</CodeBlock>
+	</Slide>
+	<Slide>
+		<ButtonAria client:visible />
+	</Slide>
+	<Slide>
+		<p>There's still a lot to do:</p>
+		<ul>
+			<li class="fragment">Attribute <pre>disabled</pre></li>
+			<li class="fragment">Attribute <pre>type=submit</pre></li>
+			<li class="fragment">Styling (size, contrast, font-size, animation, focus, transparency,...)</li>
+		</ul>
+	</Slide>
+
+
+	<Slide sectionTitle="Demo">
+		<h3>New fear unlocked: a form</h3>
+	</Slide>
+
+	<Slide sectionTitle="Demo" subSectionTitle="New fear unlocked: a form" >
+		<Form client:visible />
+	</Slide>
+
+	<Slide sectionTitle="Demo" subSectionTitle="New fear unlocked: a form">
+		<BetterForm client:visible />
+	</Slide>
+
+	<Slide sectionTitle="Demo" subSectionTitle="New fear unlocked: a form">
+		<p>There's still a lot to do:</p>
+		<ul>
+			<li class="fragment">Form validation</li>
+			<li class="fragment">Form hint</li>
+			<li class="fragment">Complex field (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#indeterminate_state_checkboxes">checkbox</a>, date picker, range selection,...)</li>
+			<li class="fragment">Styling (size, contrast, font-size, animation, focus, transparency,...)</li>
+		</ul>
+	</Slide>
+</section>

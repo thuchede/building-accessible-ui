@@ -1,0 +1,210 @@
+---
+import Slide from "../../components/Slide.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
+---
+
+<section>
+	<Slide>
+		<h1>Accessibility in practice</h1>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<ul>
+			<li class="fragment"><h2 style="font-size: 1em">Semantic HTML tags</h2></li>
+			<li class="fragment"><h2 style="font-size: 1em">Colors (and visual indicators)</h2></li>
+			<li class="fragment"><h2 style="font-size: 1em">ARIA roles and attributes</h2></li>
+			<li class="fragment"><h2 style="font-size: 1em">User interactions</h2></li>
+			<li class="fragment"><h2 style="font-size: 1em">Screen reader</h2></li>
+		</ul>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Semantic HTML tags">
+		<CodeBlock lang="html" lines="|1|2|3-11">
+			{
+				`<button onclick="...">Save</button>
+<a href="https://zenika.com/">Go to Zenika</a>
+<details>
+	<summary>
+		accordion
+	</summary>
+	accordion content
+</details>`
+			}
+		</CodeBlock>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Semantic HTML tags">
+		<div style="display:flex; flex-direction: column; gap: 48px; padding: 48px 96px; width: 80%; background: white; border-radius: 10px">
+			<button style="all: revert;font-size: 1em" onclick="confirm('Are you sure?')">Save</button>
+			<a href="https://zenika.com/" target="_blank" style="all:revert">Go to Zenika</a>
+			<details style="color: black">
+				<summary>
+					Chat is this real?
+				</summary>
+				<div>
+					Yes this is a native html tag <br/>
+					That you can even animate using native css (in Chrome v131+)
+				</div>
+			</details>
+			<style>
+				:root {
+					interpolate-size: allow-keywords;
+				}
+				details {
+					color: black;
+					border: solid 1px black;
+					border-radius: 10px;
+					text-align: justify;
+					padding-inline: 8px;
+					overflow: hidden;
+				}
+				details::details-content {
+					display: block;
+					block-size: 0;
+					transition: block-size .5s, content-visibility .5s;
+					transition-behavior: allow-discrete;
+				}
+				details[open]::details-content {
+					block-size: auto;
+					block-size: calc-size(auto);
+				}
+			</style>
+		</div>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Color contrast">
+		<CodeBlock lang="css" lines="|2|3">
+			{
+				`.bloc {
+	color: #f1bd72;
+	background: #d65718;
+}`
+			}
+		</CodeBlock>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Color contrast">
+		<div style="padding: 48px; background-color: #d65718; color: #f1bd72; font-size: 2rem; border-radius: 10px">
+			Some text with contrast issue
+		</div>
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Color contrast">
+		<div style="padding: 48px; background-color: #d65718; color: #f1bd72; font-size: 2rem; border-radius: 10px">
+			Some text with contrast issue
+		</div>
+		<div style="padding: 48px; background-color: #d65718; color: #ffddad; font-size: 2rem; border-radius: 10px">
+			Some text with no contrast issue
+		</div>
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Color contrast">
+		<p>The current algorithm only take luminance into account luminance and not the perceived lightness</p>
+		<p>New algorithm to be used by WCAG: APCA</p>
+		<a
+			href="https://git.apcacontrast.com/"
+			target="_blank"
+		>https://git.apcacontrast.com</a>
+		<a
+			href="https://www.w3.org/WAI/WCAG21/Techniques/general/G18.html#procedure/"
+			target="_blank"
+		>https://www.w3.org/WAI/WCAG21/Techniques/general/G18.html#procedure</a>
+		<a
+			href="https://www.smashingmagazine.com/2022/09/realities-myths-contrast-color/"
+			target="_blank"
+		>https://www.smashingmagazine.com/2022/09/realities-myths-contrast-color/</a>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Colors and patterns">
+		<img src="https://raw.githubusercontent.com/ashiguruma/patternomaly/refs/heads/master/assets/example.png" alt="a chart with pattern">
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Dark mode and astigmatism">
+		<p>Dark mode might look nice to some</p>
+		<p>But it can also make your content harder to read (esp. for people with astigmatism)</p>
+		<a
+			href="https://stephaniewalter.design/blog/dark-mode-accessibility-myth-debunked/"
+			target="_blank"
+		>https://stephaniewalter.design/blog/dark-mode-accessibility-myth-debunked/</a>
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice">
+		<h2>Respect the user preference</h2>
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Respect the user preference">
+		<a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme" target="_blank">@media (prefers-color-scheme: light|dark)</a>
+		<a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency" target="_blank">@media (prefers-reduced-transparency)</a>
+		<a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank">@media (prefers-reduced-motion)</a>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<h3>mobile/touch device</h3>
+		<ul>
+			<li><pre>inputmode</pre> for keyboard</li>
+			<li>Native input</li>
+			<li>Tooltip</li>
+		</ul>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Native inputs">
+		<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">Select element</a>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">Datepicker element</a>
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Native inputs">
+		<img src="/public/select.jpeg" alt="a native select element on a mobile device">
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Native inputs">
+		<img src="/public/datepicker.jpeg" alt="a native datepicker element on a mobile device">
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Keyboard on mobile devices">
+		<img src="/public/inputmode.jpg" alt="different keyboards on mobile device">
+	</Slide>
+	<Slide sectionTitle="Accessibility in practice" subSectionTitle="Tooltip on mobile devices">
+		<p>Have an alternative ready to display the content</p>
+		<ul>
+			<li class="fragment">Long press to show</li>
+			<li class="fragment">Show on focus (keyboard navigation)</li>
+			<li class="fragment">Don't use tooltip</li>
+		</ul>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<h2>Forms are hard</h2>
+		<ul>
+			<li>Label</li>
+			<li>Validation</li>
+			<li>Input type and formatting</li>
+			<li><pre>inputmode</pre> for keyboard</li>
+		</ul>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<h2>About screen readers</h2>
+		<ul>
+			<li>Learning curve</li>
+			<li>Browser/OS dependent</li>
+			<li>Nothing beats user testing</li>
+		</ul>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<iframe width="315" height="560"
+						src="https://www.youtube.com/embed/0-x2xugX6Ps"
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen></iframe>
+	</Slide>
+
+	<Slide sectionTitle="Accessibility in practice">
+		<h2>Testing</h2>
+		<ul>
+			<li>
+				Manual testing
+			</li>
+			<ul>
+				<li>Screen readers</li>
+				<li>Keyboard navigation</li>
+			</ul>
+			<li>Automated</li>
+			<li>User testing</li>
+		</ul>
+	</Slide>
+</section>

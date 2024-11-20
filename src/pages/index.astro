@@ -1,15 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Title from "../slides/Title.astro";
-import WhyAstro from "../slides/WhyAstro.astro";
+import Definition from "../slides/01-what-is-accessibility/Definition.astro";
+import Techniques from "../slides/02-accessibility-in-practice/Techniques.astro";
+import Demo from "../slides/03-example/Demo.astro";
+import Bonus from "../slides/04-more-resources/Bonus.astro";
+import Conclusion from "../slides/05-end/Conclusion.astro";
+import '../styles/globals.css'
 ---
 
-<Layout title="My Awesome Talk Title">
+<Layout title="Building accessible UI">
 	<main class="reveal">
 		<div class="slides">
 			<Title />
-			<WhyAstro />
-			<!-- Put your slides here -->
+			<Definition />
+			<Techniques />
+			<Demo />
+			<Bonus />
+			<Conclusion />
 		</div>
 	</main>
 </Layout>
