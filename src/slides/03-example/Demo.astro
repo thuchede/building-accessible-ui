@@ -111,6 +111,24 @@ return <div
 		<BetterForm client:visible />
 	</Slide>
 
+	<Slide sectionTitle="Demo" subSectionTitle="Let's built a button">
+		<CodeBlock lang="html" lines="|4-7">
+			{
+				`<h3 id='form-title' className='text-center'>Register To the next TZ:</h3>
+<form className={'grid grid-cols-2 gap-1'}
+		onSubmit={handleSubmit} autoComplete="on">
+	<label htmlFor="firstname">Firstname</label>
+	<input type="text" id="firstname" name='firstname'
+		placeholder='Jane' autoComplete="given-name"
+		className='ps-2' required aria-required='true'/>
+	<!-- ... -->
+	<input className={'btn col-span-2'} type='submit' value="Submit"></input>
+</form>
+`
+			}
+		</CodeBlock>
+	</Slide>
+
 	<Slide sectionTitle="Demo" subSectionTitle="New fear unlocked: a form">
 		<p>There's still a lot to do:</p>
 		<ul>

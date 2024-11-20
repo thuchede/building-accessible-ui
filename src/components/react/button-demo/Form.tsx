@@ -34,17 +34,17 @@ export const BetterForm = () => {
 	const [submitted, setSubmitted] = useState(false)
 	const [error, setError] = useState<string | undefined>(undefined)
 
-	if (submitted && !error) {
-		return <div>
-			<p aria-live='polite' className='text-green-400'>You're all set!</p>
-			<button className='btn' onClick={() => setSubmitted(false)}>Go back</button>
-		</div>
-	}
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault()
 		setSubmitted(true);
 		setError(undefined)
+	}
+	if (submitted && !error) {
+		return <div>
+			<p aria-live='polite' className='text-green-400'>You're all set!</p>
+			<button className='btn' onClick={() => setSubmitted(false)}>Go back</button>
+		</div>
 	}
 
 	return <>
