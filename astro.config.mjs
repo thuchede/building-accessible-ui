@@ -8,7 +8,7 @@ import react from '@astrojs/react'
 export default defineConfig({
 
 	site: "https://thuchede.github.io",
-	base: '/accessibility',
+	base: '/building-accessible-ui',
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,
