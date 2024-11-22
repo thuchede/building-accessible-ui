@@ -1,27 +1,18 @@
-# Reveal.js + Astro
+# Building accessible UI
 
-Minimalist template for presentations on the web.
+An introduction to what is accessibility and why it's important.
 
-## Usage
+Some exploration of what we need to do to make a component accessible.
 
-You have several options to start a new presentation using this template:
+You can preview the slides here: https://thuchede.github.io/building-accessible-ui/
 
-- Click on the button 'Use this template' above, or
-- Clone the repo : `git clone git@github.com:jsulpis/slides-template.git`, or
-- Use [degit](https://www.npmjs.com/package/degit) (get a copy without cloning): `pnpm dlx degit jsulpis/slides-template my-talk`
+## Run this locally
 
-## UI Framework
-
-For the specific cases where you need one, you can add one of the [frameworks](https://docs.astro.build/en/guides/integrations-guide/) supported by Astro.
-
-For instance:
-
-```
-pnpm astro add svelte
+```shell
+pnpm install
+pnpm run dev
 ```
 
-or
+## Reveal.js + Astro
 
-```bash
-pnpm astro add react tailwind
-```
+This deck was made with the awesome template from @jsulpis that can be found here: https://github.com/jsulpis/slides-templat
